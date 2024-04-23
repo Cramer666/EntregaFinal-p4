@@ -18,8 +18,8 @@ class KillInterruptionHandler(AbstractInterruptionHandler):
         # As the currently running process is now in terminated state,
         # the last step is to tell the scheduler to run the next process
         # in the ready queue, if any.
+        next_pid = self.kernel.scheduler.next_process
         if self.kernel.scheduler.next_process is not None:
-           next_pid = self.kernel.scheduler.next_process
            self.kernel.scheduler.move_to_running(next_pid)
  
             
