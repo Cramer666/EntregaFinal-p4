@@ -30,7 +30,6 @@ class IoOutInterruptionHandler(AbstractInterruptionHandler):
         # in the ready queue, it may happen that it also needs to be run,
         # the last step is to tell the scheduler to run the next process
         # in the ready queue, if any.
-    
+        next_pid = self.kernel.scheduler.next_process
         if self.kernel.scheduler.next_process is not None:
-            next_pid = self.kernel.scheduler.next_process
             self.kernel.scheduler.move_to_running(next_pid)
