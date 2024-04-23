@@ -66,3 +66,8 @@ class ProcessTable():
             [[Printer.tabulated(elements, tablefmt="plain")]],
             headers=["Process Table"]
         )
+
+    @property
+    def last_used_pid(self):
+      """ Return the last used pid. Should be uses only for printing history. """
+      return self.__last_used_pid
