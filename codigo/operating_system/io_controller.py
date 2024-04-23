@@ -44,9 +44,10 @@ class IOController:
         self.__send_next_request__()
 
     def __send_next_request__(self):
-        if (not self.__request_queue.is_empty):
+         device = HARDWARE.io_device(self.__io_device_id)
+        if (not self.__request_queue.is_empty and device.is_idle):
             self.__currently_running_pid = self.__request_queue.dequeue()
-            HARDWARE.io_device(self.__io_device_id).request()
+            device.request()
 
     def __repr__(self):
         return Printer.tabulated([
