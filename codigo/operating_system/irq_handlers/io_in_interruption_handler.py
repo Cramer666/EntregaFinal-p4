@@ -26,8 +26,8 @@ class IoInInterruptionHandler(AbstractInterruptionHandler):
         # As the currently running process is now in waiting state,
         # the last step is to tell the scheduler to run the next process
         # in the ready queue, if any.
+        next_pid = self.kernel.scheduler.next_process
         if self.kernel.scheduler.next_process is not None:
-            next_pid = self.kernel.scheduler.next_process
             self.kernel.scheduler.move_to_running(next_pid)
 
 
