@@ -16,11 +16,7 @@ class History:
         self.__ticks_registered += 1
 
         # Check if there is a new max process ID
-        self.__last_max_pid_seen = (
-               max(self.__os.process_table.all_pids())
-            if len(self.__os.process_table.all_pids()) > 0
-            else self.__last_max_pid_seen
-        )
+        self.__last_max_pid_seen = self.__os.process_table.last_used_pid
 
         # Register the current process using the CPU at this tick
         pid = self.__os.scheduler.currently_running_pid
